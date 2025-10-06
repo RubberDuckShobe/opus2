@@ -343,8 +343,8 @@ macro_rules! generic_ctls {
 				Bandwidth::decode(value, concat!(stringify!($fn), "(OPUS_GET_BANDWIDTH)"))
 			}
 
-			/// Get the samping rate the encoder was intialized with.
-			pub fn get_sample_rate(&mut self) -> Result<u32> {
+			/// Get the sampling rate the encoder/decoder was intialized with.
+			pub fn get_sample_rate(&self) -> Result<u32> {
 				let mut value: i32 = 0;
 				ctl!($fn, self, ffi::OPUS_GET_SAMPLE_RATE_REQUEST, &mut value);
 				Ok(value as u32)
